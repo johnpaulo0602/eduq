@@ -19,7 +19,23 @@ import IconLogout from '@/components/icon/icon-logout';
 import { usePathname, useRouter } from 'next/navigation';
 import { getTranslation } from '@/i18n';
 
+import { signIn, signOut, useSession } from 'next-auth/react'
+
 const Header = () => {
+
+    const { status, data } = useSession();
+
+
+    const truncatedEmail = data?.user.email.length > 18 ? `${data?.user.email.slice(0, 18)}...` : data?.user.email;
+
+    async function handleLogin() {
+        await signIn();
+    }
+
+    async function handleLogout() {
+        await signOut();
+    }
+
     const pathname = usePathname();
     const dispatch = useDispatch();
     const router = useRouter();
@@ -255,19 +271,18 @@ const Header = () => {
                                 offset={[0, 8]}
                                 placement={`${isRtl ? 'bottom-start' : 'bottom-end'}`}
                                 btnClassName="relative group block"
-                                button={<img className="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100" src="/assets/images/user-profile.jpeg" alt="userProfile" />}
+                                button={<img className="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100" src={data?.user.image} alt="userProfile" />}
                             >
                                 <ul className="w-[230px] !py-0 font-semibold text-dark dark:text-white-dark dark:text-white-light/90">
                                     <li>
                                         <div className="flex items-center px-4 py-4">
-                                            <img className="h-10 w-10 rounded-md object-cover" src="/assets/images/user-profile.jpeg" alt="userProfile" />
+                                            <img className="h-10 w-10 rounded-md object-cover" src={data?.user.image} alt="userProfile" />
                                             <div className="truncate ltr:pl-4 rtl:pr-4">
                                                 <h4 className="text-base">
-                                                    John Doe
-                                                    <span className="rounded bg-success-light px-1 text-xs text-success ltr:ml-2 rtl:ml-2">Pro</span>
+                                                    {data?.user.name}
                                                 </h4>
                                                 <button type="button" className="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white">
-                                                    johndoe@gmail.com
+                                                    {truncatedEmail}
                                                 </button>
                                             </div>
                                         </div>
@@ -285,10 +300,10 @@ const Header = () => {
                                         </Link>
                                     </li>
                                     <li className="border-t border-white-light dark:border-white-light/10">
-                                        <Link href="/auth/boxed-signin" className="!py-3 text-danger">
+                                        <button onClick={handleLogout} className="!py-3 text-danger">
                                             <IconLogout className="h-4.5 w-4.5 shrink-0 rotate-90 ltr:mr-2 rtl:ml-2" />
                                             Sair
-                                        </Link>
+                                        </button>
                                     </li>
                                 </ul>
                             </Dropdown>
