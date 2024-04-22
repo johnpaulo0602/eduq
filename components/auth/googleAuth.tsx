@@ -16,7 +16,7 @@ const GoogleSignInButton = () => {
     <button
       onClick={handleSignIn}
       className="inline-flex h-8 w-8 items-center justify-center rounded-full p-0 transition hover:scale-110"
-      style={{ background: 'linear-gradient(135deg, rgba(239, 18, 98, 1) 0%, rgba(67, 97, 238, 1) 100%)' }}
+      style={{ background: 'linear-gradient(135deg, rgba(245, 166, 12, 1) 0%, rgba(245, 166, 100, 1) 100%)' }}
     >
     <IconGoogle />
     </button>
