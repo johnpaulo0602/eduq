@@ -39,14 +39,26 @@ const CoverLogin = () => {
                                 />
                             </Link>
                             <div className="mt-24 hidden w-full max-w-[430px] lg:block">
-                                <img src="/assets/images/auth/login.svg" alt="Cover Image" className="w-full" />
+                                <Image 
+                                src="/assets/images/auth/login.svg" 
+                                alt="Cover Image" 
+                                className="w-full"
+                                width={100}
+                                height={100}
+                                />
                             </div>
                         </div>
                     </div>
                     <div className="relative flex w-full flex-col items-center justify-center gap-6 px-4 pb-16 pt-6 sm:px-6 lg:max-w-[667px]">
                         <div className="flex w-full max-w-[440px] items-center justify-center gap-2 lg:absolute lg:end-6 lg:top-6 lg:max-w-full">
                             <Link href="/" className="block w-28 lg:hidden">
-                                <img src="/assets/images/logo.svg" alt="Logo" className="mx-auto w-full" />
+                                <Image 
+                                src="/assets/images/logo.svg" 
+                                alt="Logo" 
+                                className="mx-auto w-full"
+                                width={100}
+                                height={100}
+                                />
                             </Link>
                         </div>
                         <div className="w-full max-w-[440px] lg:mt-16">
