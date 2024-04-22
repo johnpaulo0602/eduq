@@ -18,21 +18,16 @@ const menuItems = [
     { href: "/", icon: IconMenuDashboard, label: "Home" },
     { href: "/apps/mailbox", icon: IconMenuElements, label: "Questões" },
     { href: "/apps/todolist", icon: IconMenuTodo, label: "Provas" },
-    { href: "/apps/notes", icon: IconMenuCharts, label: "Relatórios" },
-    { href: "/apps/scrumboard", icon: IconMenuUsers, label: "Usuários" },
-    { href: "/apps/contacts", icon: IconSettings, label: "Configurações" },
-    { href: "/apps/contacts", icon: IconSettings, label: "Configurações" },
-    { href: "/apps/contacts", icon: IconSettings, label: "Configurações" },
-    { href: "/apps/contacts", icon: IconSettings, label: "Configurações" },
-    { href: "/apps/contacts", icon: IconSettings, label: "Configurações" },
     {
-        href: "#", icon: IconMenuDashboard, label: "Dashboard", submenu: [
+        href: "#", icon: IconMenuCharts, label: "Relatórios", submenu: [
             { href: "/sales", label: "Vendas" },
             { href: "/analytics", label: "Análises" },
             { href: "/finance", label: "Finanças" },
             { href: "/crypto", label: "Cripto" },
         ]
     },
+    { href: "/apps/scrumboard", icon: IconMenuUsers, label: "Usuários" },
+    { href: "/apps/contacts", icon: IconSettings, label: "Configurações" },
 ];
 
 const Sidebar = () => {
