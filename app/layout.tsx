@@ -7,8 +7,8 @@ import { AuthProvider } from '@/providers/auth'
 
 export const metadata: Metadata = {
     title: {
-        template: '%s | VRISTO - Multipurpose Tailwind Dashboard Template',
-        default: 'VRISTO - Multipurpose Tailwind Dashboard Template',
+        template: '%s | EduQ - Banco de Provas',
+        default: 'EduQ - Banco de Provas',
     },
 };
 const nunito = Nunito({
@@ -20,7 +20,7 @@ const nunito = Nunito({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en">
+        <html lang="pt-br">
             <body className={nunito.variable}>
                 <AuthProvider>
                     <ProviderComponent>{children}</ProviderComponent>
