@@ -11,12 +11,22 @@ import IconMenuElements from '@/components/icon/menu/icon-menu-elements';
 import IconMenuCharts from '@/components/icon/menu/icon-menu-charts';
 import IconMenuUsers from '@/components/icon/menu/icon-menu-users';
 import IconCaretsDown from '@/components/icon/icon-carets-down';
+import IconMenuComponents from '@/components/icon/menu/icon-menu-components';
 import { usePathname } from 'next/navigation';
 import AnimateHeight from 'react-animate-height';
 
 const menuItems = [
     { href: "/", icon: IconMenuDashboard, label: "Home" },
-    { href: "/apps/mailbox", icon: IconMenuElements, label: "Questões" },
+    { 
+        href: "/apps/mailbox", icon: IconMenuElements, label: "Banco de Questões", },
+    { 
+        href: "/apps/mailbox", icon: IconMenuComponents, label: "Disciplinas", submenu: [
+            { href: "/#", label: "Disciplina"},
+            { href: "/#", label: "Tópicos"},
+            { href: "/#", label: "Fontes"},
+            { href: "/#", label: "Tags"},
+        ]
+    },
     { href: "/apps/todolist", icon: IconMenuTodo, label: "Provas" },
     {
         href: "#", icon: IconMenuCharts, label: "Relatórios", submenu: [
@@ -74,23 +84,32 @@ const Sidebar = () => {
                     <ul className="relative space-y-0.5 p-4 py-0 font-semibold">
                         {menuItems.map(({ href, icon: Icon, label, submenu }) => (
                             <li key={href} className={`nav-item ${submenu ? 'menu' : ''}`}>
-                                <button type="button" className={`group ${isActive(href) ? 'active' : ''}`} onClick={() => submenu && toggleMenu(label)}>
-                                    <div className="flex items-center">
-                                        <Icon className="shrink-0 group-hover:!text-primary" />
-                                        <span className={`text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark`}>{label}</span>
-                                    </div>
-                                    {submenu && (
+                                {submenu ? (
+                                    <button type="button" className={`group ${isActive(href) ? 'active' : ''}`} onClick={() => toggleMenu(label)}>
+                                        <div className="flex items-center">
+                                            <Icon className="shrink-0 group-hover:!text-primary" />
+                                            <span className={`text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark`}>{label}</span>
+                                        </div>
                                         <div className={`${currentMenu !== label ? '-rotate-90 rtl:rotate-90' : ''}`}>
                                             <IconCaretsDown />
                                         </div>
-                                    )}
-                                </button>
+                                    </button>
+                                ) : (
+                                    <Link href={href} className={`group ${isActive(href) ? 'active' : ''}`}>
+                                        <div className="flex items-center">
+                                            <Icon className="shrink-0 group-hover:!text-primary" />
+                                            <span className={`text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark`}>{label}</span>
+                                        </div>
+                                    </Link>
+                                )}
                                 {submenu && (
                                     <AnimateHeight duration={300} height={currentMenu === label ? 'auto' : 0}>
                                         <ul className="sub-menu text-gray-500">
                                             {submenu.map(subItem => (
                                                 <li key={subItem.href}>
-                                                    <Link href={subItem.href}>{subItem.label}</Link>
+                                                    <Link href={subItem.href}>
+                                                        <div>{subItem.label}</div>
+                                                    </Link>
                                                 </li>
                                             ))}
                                         </ul>
