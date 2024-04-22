@@ -21,7 +21,7 @@ const menuItems = [
         href: "/#", icon: IconMenuElements, label: "Banco de Questões", },
     { 
         href: "/#", icon: IconMenuComponents, label: "Disciplinas", submenu: [
-            { href: "/#", label: "Disciplina"},
+            { href: "/disciplinas", label: "Disciplina"},
             { href: "/#", label: "Tópicos"},
             { href: "/#", label: "Fontes"},
             { href: "/#", label: "Tags"},

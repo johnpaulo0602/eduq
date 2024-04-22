@@ -1,4 +1,5 @@
 
+import Image from 'next/image'
 import ComponentsAuthLoginForm from '@/components/auth/components-auth-login-form';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -15,7 +16,13 @@ const CoverLogin = () => {
     return (
         <div>
             <div className="absolute inset-0">
-                <img src="/assets/images/auth/bg-gradient.png" alt="image" className="h-full w-full object-cover" />
+                <Image
+                    src="/assets/images/auth/bg-gradient.png"
+                    alt="image"
+                    className="object-cover h-full w-full"
+                    width={100}
+                    height={100}
+                />
             </div>
             <div className="relative flex min-h-screen items-center justify-center  px-6 py-10 dark:bg-[#060818] sm:px-16">
                 <div className="relative flex w-full max-w-[1502px] flex-col justify-between overflow-hidden rounded-md bg-white/60 backdrop-blur-lg dark:bg-black/50 lg:min-h-[758px] lg:flex-row lg:gap-10 xl:gap-0">
@@ -23,7 +30,13 @@ const CoverLogin = () => {
                         <div className="absolute inset-y-0 w-8 from-primary/10 via-transparent to-transparent ltr:-right-10 ltr:bg-gradient-to-r rtl:-left-10 rtl:bg-gradient-to-l xl:w-16 ltr:xl:-right-20 rtl:xl:-left-20"></div>
                         <div className="ltr:xl:-skew-x-[14deg] rtl:xl:skew-x-[14deg]">
                             <Link href="/" className="ms-10 block w-48 lg:w-72">
-                                <img src="/assets/images/auth/logo-white.svg" alt="Logo" className="w-48" />
+                                <Image
+                                    src="/assets/images/auth/logo-white.svg"
+                                    alt="Logo" 
+                                    className="w-48"
+                                    width={100}
+                                    height={100}
+                                />
                             </Link>
                             <div className="mt-24 hidden w-full max-w-[430px] lg:block">
                                 <img src="/assets/images/auth/login.svg" alt="Cover Image" className="w-full" />
