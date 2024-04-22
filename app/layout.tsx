@@ -1,9 +1,10 @@
 import ProviderComponent from '@/components/layouts/provider-component';
+import AuthProvider from "@/components/auth-provider";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import '../styles/tailwind.css';
 import { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
-import { AuthProvider } from '@/providers/auth'
+
 
 export const metadata: Metadata = {
     title: {
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <AuthProvider>
                     <ProviderComponent>{children}</ProviderComponent>
                 </AuthProvider>
+
             </body>
         </html>
     );

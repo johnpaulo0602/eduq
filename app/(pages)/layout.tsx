@@ -1,24 +1,28 @@
+
 import ContentAnimation from '@/components/layouts/content-animation';
 import Footer from '@/components/layouts/footer';
 import Header from '@/components/layouts/header';
 import MainContainer from '@/components/layouts/main-container';
 import Overlay from '@/components/layouts/overlay';
 import ScrollToTop from '@/components/layouts/scroll-to-top';
-import Setting from '@/components/layouts/setting';
 import Sidebar from '@/components/layouts/sidebar';
 import Portals from '@/components/portals';
 
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+
+import { getCurrentUser } from "@/lib/session";
+
 import { redirect } from 'next/navigation'
 
 export default async function DefaultLayout({ children }: { children: React.ReactNode }) {
+ 
+    const session = await getCurrentUser();
 
-    const session = await getServerSession(authOptions)
+    // Se não houver sessão, redirecione para a página de login
+    if (!session) {
 
-    // if(!session || !session.user){
-    //     redirect('/login')
-    // }
+        redirect('/login')
+
+    }
 
     return (
         <>

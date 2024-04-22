@@ -1,19 +1,19 @@
 import React from 'react';
 
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
 import { redirect } from 'next/navigation'
+import { getCurrentUser } from "@/lib/session";
 
 const AuthLayout = async ({ children }: { children: React.ReactNode }) => {
 
-    const session = await getServerSession(authOptions)
+    const session = await getCurrentUser();
 
-    if(!session || !session.user){
+    if(!session){
         return <div className="min-h-screen text-black dark:text-white-dark">{children} </div>;
         
     }
 
     redirect('/')
+
     
 };
 
