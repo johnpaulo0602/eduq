@@ -18,9 +18,9 @@ import AnimateHeight from 'react-animate-height';
 const menuItems = [
     { href: "/", icon: IconMenuDashboard, label: "Home" },
     { 
-        href: "/apps/mailbox", icon: IconMenuElements, label: "Banco de Questões", },
+        href: "/#", icon: IconMenuElements, label: "Banco de Questões", },
     { 
-        href: "/apps/mailbox", icon: IconMenuComponents, label: "Disciplinas", submenu: [
+        href: "/#", icon: IconMenuComponents, label: "Disciplinas", submenu: [
             { href: "/#", label: "Disciplina"},
             { href: "/#", label: "Tópicos"},
             { href: "/#", label: "Fontes"},
@@ -30,14 +30,14 @@ const menuItems = [
     { href: "/apps/todolist", icon: IconMenuTodo, label: "Provas" },
     {
         href: "#", icon: IconMenuCharts, label: "Relatórios", submenu: [
-            { href: "/sales", label: "Vendas" },
-            { href: "/analytics", label: "Análises" },
-            { href: "/finance", label: "Finanças" },
-            { href: "/crypto", label: "Cripto" },
+            { href: "/#", label: "Vendas" },
+            { href: "/#", label: "Análises" },
+            { href: "/#", label: "Finanças" },
+            { href: "/#", label: "Cripto" },
         ]
     },
-    { href: "/apps/scrumboard", icon: IconMenuUsers, label: "Usuários" },
-    { href: "/apps/contacts", icon: IconSettings, label: "Configurações" },
+    { href: "/#", icon: IconMenuUsers, label: "Usuários" },
+    { href: "/#", icon: IconSettings, label: "Configurações" },
 ];
 
 const Sidebar = () => {
