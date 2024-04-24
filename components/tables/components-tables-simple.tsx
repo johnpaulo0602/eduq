@@ -1,9 +1,9 @@
 'use client';
 import IconTrashLines from '@/components/icon/icon-trash-lines';
-import PanelCodeHighlight from '@/components/panel-code-highlight';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import React from 'react';
+import { Table } from '@/components/Table';
 
 const ComponentsTablesSimple = () => {
     const tableData = [
@@ -56,130 +56,46 @@ const ComponentsTablesSimple = () => {
             office: 'Canada',
         },
     ];
+
     return (
-        <PanelCodeHighlight
-            title="Simple Table"
-            codeHighlight={`import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css';
-
-const tableData = [
-    {
-        id: 1,
-        name: 'John Doe',
-        email: 'johndoe@yahoo.com',
-        date: '10/08/2020',
-        sale: 120,
-        status: 'Complete',
-        register: '5 min ago',
-        progress: '40%',
-        position: 'Developer',
-        office: 'London',
-    },
-    ...
-];
-
-<div className="table-responsive mb-5">
-    <table>
-        <thead>
-            <tr>
+        <Table.Root>
+            <Table.Head>
                 <th>Name</th>
                 <th>Date</th>
                 <th>Sale</th>
                 <th>Status</th>
                 <th className="text-center">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {tableData.map((data) => {
-                return (
-                    <tr key={data.id}>
-                        <td>
-                            <div className="whitespace-nowrap">{data.name}</div>
-                        </td>
-                        <td>{data.date}</td>
-                        <td>{data.sale}</td>
-                        <td>
-                            <div
-                                className={\`whitespace-nowrap \${
-                                    data.status === 'completed'
-                                        ? 'text-success'
-                                        : data.status === 'Pending'
-                                        ? 'text-secondary'
-                                        : data.status === 'In Progress'
-                                        ? 'text-info'
-                                        : data.status === 'Canceled'
-                                        ? 'text-danger'
-                                        : 'text-success'
-                                }\`}
-                            >
-                                {data.status}
-                            </div>
-                        </td>
-                        <td className="text-center">
+            </Table.Head>
+            <Table.Body>
+                {tableData.map((data) => (
+                    <Table.Row key={data.id.toString()}>
+                        <Table.Cell className="">{data.name}</Table.Cell>
+                        <Table.Cell className="">{data.date}</Table.Cell>
+                        <Table.Cell className="">{data.sale.toString()}</Table.Cell>
+                        <Table.Cell className={`whitespace-nowrap ${
+                            data.status === 'completed'
+                                ? 'text-success'
+                                : data.status === 'Pending'
+                                ? 'text-secondary'
+                                : data.status === 'In Progress'
+                                ? 'text-info'
+                                : data.status === 'Canceled'
+                                ? 'text-danger'
+                                : 'text-success'
+                        }`}>
+                            {data.status}
+                        </Table.Cell>
+                        <Table.Cell className="text-center">
                             <Tippy content="Delete">
                                 <button type="button">
-                                    <svg>...</svg>
+                                    <IconTrashLines className="m-auto" />
                                 </button>
                             </Tippy>
-                        </td>
-                    </tr>
-                );
-            })}
-        </tbody>
-    </table>
-</div>`}
-        >
-            <div className="table-responsive mb-5">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Date</th>
-                            <th>Sale</th>
-                            <th>Status</th>
-                            <th className="text-center">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tableData.map((data) => {
-                            return (
-                                <tr key={data.id}>
-                                    <td>
-                                        <div className="whitespace-nowrap">{data.name}</div>
-                                    </td>
-                                    <td>{data.date}</td>
-                                    <td>{data.sale}</td>
-                                    <td>
-                                        <div
-                                            className={`whitespace-nowrap ${
-                                                data.status === 'completed'
-                                                    ? 'text-success'
-                                                    : data.status === 'Pending'
-                                                    ? 'text-secondary'
-                                                    : data.status === 'In Progress'
-                                                    ? 'text-info'
-                                                    : data.status === 'Canceled'
-                                                    ? 'text-danger'
-                                                    : 'text-success'
-                                            }`}
-                                        >
-                                            {data.status}
-                                        </div>
-                                    </td>
-                                    <td className="text-center">
-                                        <Tippy content="Delete">
-                                            <button type="button">
-                                                <IconTrashLines className="m-auto" />
-                                            </button>
-                                        </Tippy>
-                                    </td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
-            </div>
-        </PanelCodeHighlight>
+                        </Table.Cell>
+                    </Table.Row>
+                ))}
+            </Table.Body>
+        </Table.Root>
     );
 };
 
