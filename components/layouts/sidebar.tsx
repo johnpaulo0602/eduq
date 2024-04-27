@@ -14,6 +14,7 @@ import IconCaretsDown from '@/components/icon/icon-carets-down';
 import IconMenuComponents from '@/components/icon/menu/icon-menu-components';
 import { usePathname } from 'next/navigation';
 import AnimateHeight from 'react-animate-height';
+import Image from 'next/image';
 
 const menuItems = [
     { href: "/", icon: IconMenuDashboard, label: "Home" },
@@ -69,7 +70,13 @@ const Sidebar = () => {
             <nav className={`sidebar fixed bottom-0 top-0 z-50 h-full min-h-screen w-[260px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-all duration-300 ${semidark ? 'text-white-dark' : ''}`}>
                 <div className="flex items-center justify-between px-4 py-3 bg-white dark:bg-black">
                     <Link href="/" className="main-logo flex shrink-0 items-center">
-                        <img className="ml-[5px] w-24" src="/assets/images/logo.svg" alt="logo" />
+                        <Image 
+                        className="ml-[5px] w-24" 
+                        src="/assets/images/logo.svg" 
+                        alt="logo" 
+                        width={24}
+                        height={24}
+                        />
                     </Link>
 
                     <button
