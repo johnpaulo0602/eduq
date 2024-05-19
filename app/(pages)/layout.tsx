@@ -18,11 +18,11 @@ export default async function DefaultLayout({ children }: { children: React.Reac
     const session = await getCurrentUser();
 
     // Se não houver sessão, redirecione para a página de login
-    if (!session) {
+    // if (!session) {
 
-        redirect('/login')
+    //     redirect('/login')
 
-    }
+    // }
 
     return (
         <>
